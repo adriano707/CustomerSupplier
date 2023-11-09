@@ -1,10 +1,10 @@
 ﻿using System.Text;
-using CustomerSupplier.WebApi.Settings;
+using CustomerSupplier.WebApi.Configurations.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 
-namespace CustomerSupplier.WebApi.AuthConfiguration;
+namespace CustomerSupplier.WebApi.Configurations.Auth;
 
 public static class AuthorizationConfiguration
 {

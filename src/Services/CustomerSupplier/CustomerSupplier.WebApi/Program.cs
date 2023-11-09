@@ -1,9 +1,12 @@
 using CustomerSupplier.CrossCutting.Identity;
+using CustomerSupplier.CrossCutting.Identity.Data;
 using CustomerSupplier.Data;
 using CustomerSupplier.Data.Repository;
 using CustomerSupplier.Domain.Repository;
 using CustomerSupplier.Domain.Sesrvices;
-using CustomerSupplier.WebApi.AuthConfiguration;
+using CustomerSupplier.WebApi.Configurations;
+using CustomerSupplier.WebApi.Configurations.Auth;
+using CustomerSupplier.WebApi.Configurations.DependenceInjection;
 using CustomerSupplier.WebApi.Dto;
 using CustomerSupplier.WebApi.Validation;
 using FluentValidation;
@@ -23,19 +26,15 @@ builder.Services.AddAuthorizationConfiguration(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddFluentValidation();
-builder.Services.AddScoped<IValidator<CustomerSupplierDto>, CreateCustomerSupplierValidation>();
-builder.Services.AddScoped<IValidator<CustomerSupplierAddressDto>, CreateCustomerSupplierAddressValifation>();
-builder.Services.AddScoped<IValidator<CustomerSupplierContactDto>, CreateCustomerSupplierContactValidation>();
+builder.Services.ConfigureValidations();
+builder.Services.ConfigureDomainServices();
+builder.Services.ConfigureRepositories();
 
-builder.Services.AddScoped<ICustomerSupplierService, CustomerSupplierService>();
-builder.Services.AddScoped<IRepository, Repository>();
+#region Migrations
 
-var serviceProvider = builder.Services.BuildServiceProvider();
+builder.Services.ApplayDatabaseMigrations();
 
-var dbContext = serviceProvider.GetService<CustomerSupplierDbContext>();
-
-dbContext.Database.Migrate();
+#endregion
 
 var app = builder.Build();
 
