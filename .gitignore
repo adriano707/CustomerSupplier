@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/bin/Debug
+/obj
+/src/Services/CustomerSupplier/CustomerSupplier.CrossCutting.Identity/bin/Debug/net7.0
+/src/Services/CustomerSupplier/CustomerSupplier.CrossCutting.Identity/obj
+/src/Services/CustomerSupplier/CustomerSupplier.Data/bin/Debug/net7.0
+/src/Services/CustomerSupplier/CustomerSupplier.Data/obj
+/src/Services/CustomerSupplier/CustomerSupplier.Domain/bin/Debug
+/src/Services/CustomerSupplier/CustomerSupplier.Domain/obj
+/src/Services/CustomerSupplier/CustomerSupplier.Domain.Test/bin/Debug/net7.0
+/src/Services/CustomerSupplier/CustomerSupplier.Domain.Test/obj
+/src/Services/CustomerSupplier/CustomerSupplier.WebApi/bin/Debug/net7.0
+/src/Services/CustomerSupplier/CustomerSupplier.WebApi/obj

@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  customersupplier.webapi:
+    image: ${DOCKER_REGISTRY-}customersupplierwebapi
+    build:
+      context: .
+      dockerfile: src/Services/CustomerSupplier/CustomerSupplier.WebApi/Dockerfile
