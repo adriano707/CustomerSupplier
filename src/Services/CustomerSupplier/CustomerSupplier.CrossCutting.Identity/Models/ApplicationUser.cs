@@ -1,5 +1,4 @@
-﻿using CustomerSupplier.Domain.Entities;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace CustomerSupplier.CrossCutting.Identity.Models
 {

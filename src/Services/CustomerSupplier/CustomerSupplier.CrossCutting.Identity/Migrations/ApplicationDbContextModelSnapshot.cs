@@ -96,7 +96,7 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasColumnName("user_name");
 
                     b.HasKey("Id")
-                        .HasName("pk_applicationuser");
+                        .HasName("pk_asp_net_users");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -105,7 +105,7 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.ToTable("applicationuser", "public");
+                    b.ToTable("AspNetUsers", "public");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -130,13 +130,13 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasColumnName("normalized_name");
 
                     b.HasKey("Id")
-                        .HasName("pk_identityrole");
+                        .HasName("pk_asp_net_roles");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
                         .HasDatabaseName("RoleNameIndex");
 
-                    b.ToTable("identityrole", "public");
+                    b.ToTable("AspNetRoles", "public");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -162,12 +162,12 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasColumnName("role_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_identityroleclaim_string");
+                        .HasName("pk_asp_net_role_claims");
 
                     b.HasIndex("RoleId")
-                        .HasDatabaseName("ix_identityroleclaim_string_role_id");
+                        .HasDatabaseName("ix_asp_net_role_claims_role_id");
 
-                    b.ToTable("identityroleclaim<string>", "public");
+                    b.ToTable("AspNetRoleClaims", "public");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -193,12 +193,12 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_identityuserclaim_string");
+                        .HasName("pk_asp_net_user_claims");
 
                     b.HasIndex("UserId")
-                        .HasDatabaseName("ix_identityuserclaim_string_user_id");
+                        .HasDatabaseName("ix_asp_net_user_claims_user_id");
 
-                    b.ToTable("identityuserclaim<string>", "public");
+                    b.ToTable("AspNetUserClaims", "public");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -221,12 +221,12 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("LoginProvider", "ProviderKey")
-                        .HasName("pk_identityuserlogin_string");
+                        .HasName("pk_asp_net_user_logins");
 
                     b.HasIndex("UserId")
-                        .HasDatabaseName("ix_identityuserlogin_string_user_id");
+                        .HasDatabaseName("ix_asp_net_user_logins_user_id");
 
-                    b.ToTable("identityuserlogin<string>", "public");
+                    b.ToTable("AspNetUserLogins", "public");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -240,12 +240,12 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasColumnName("role_id");
 
                     b.HasKey("UserId", "RoleId")
-                        .HasName("pk_identityuserrole_string");
+                        .HasName("pk_asp_net_user_roles");
 
                     b.HasIndex("RoleId")
-                        .HasDatabaseName("ix_identityuserrole_string_role_id");
+                        .HasDatabaseName("ix_asp_net_user_roles_role_id");
 
-                    b.ToTable("identityuserrole<string>", "public");
+                    b.ToTable("AspNetUserRoles", "public");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -267,9 +267,9 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasColumnName("value");
 
                     b.HasKey("UserId", "LoginProvider", "Name")
-                        .HasName("pk_identityusertoken_string");
+                        .HasName("pk_asp_net_user_tokens");
 
-                    b.ToTable("identityusertoken<string>", "public");
+                    b.ToTable("AspNetUserTokens", "public");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -279,7 +279,7 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_identityroleclaim_string_identityrole_role_id");
+                        .HasConstraintName("fk_asp_net_role_claims_asp_net_roles_role_id");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -289,7 +289,7 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_identityuserclaim_string_applicationuser_user_id");
+                        .HasConstraintName("fk_asp_net_user_claims_asp_net_users_user_id");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -299,7 +299,7 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_identityuserlogin_string_applicationuser_user_id");
+                        .HasConstraintName("fk_asp_net_user_logins_asp_net_users_user_id");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -309,14 +309,14 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_identityuserrole_string_identityrole_role_id");
+                        .HasConstraintName("fk_asp_net_user_roles_asp_net_roles_role_id");
 
                     b.HasOne("CustomerSupplier.CrossCutting.Identity.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_identityuserrole_string_applicationuser_user_id");
+                        .HasConstraintName("fk_asp_net_user_roles_asp_net_users_user_id");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -326,7 +326,7 @@ namespace CustomerSupplier.CrossCutting.Identity.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_identityusertoken_string_applicationuser_user_id");
+                        .HasConstraintName("fk_asp_net_user_tokens_asp_net_users_user_id");
                 });
 #pragma warning restore 612, 618
         }
