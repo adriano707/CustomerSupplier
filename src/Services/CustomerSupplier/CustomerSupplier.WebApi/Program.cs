@@ -1,17 +1,9 @@
 using CustomerSupplier.CrossCutting.Identity;
-using CustomerSupplier.CrossCutting.Identity.Data;
 using CustomerSupplier.Data;
-using CustomerSupplier.Data.Repository;
-using CustomerSupplier.Domain.Repository;
-using CustomerSupplier.Domain.Sesrvices;
 using CustomerSupplier.WebApi.Configurations;
 using CustomerSupplier.WebApi.Configurations.Auth;
 using CustomerSupplier.WebApi.Configurations.DependenceInjection;
-using CustomerSupplier.WebApi.Dto;
-using CustomerSupplier.WebApi.Validation;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore;
+using CustomerSupplier.WebApi.Configurations.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +21,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureValidations();
 builder.Services.ConfigureDomainServices();
 builder.Services.ConfigureRepositories();
+
+builder.Services.AddSweggerConfiguration();
 
 #region Migrations
 
